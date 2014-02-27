@@ -98,6 +98,7 @@ Navigate to **#!/a/b/f/k**
 **Step 3:** The final step begins at the root node, which traverses the entire graph (as indicated by the numbers beside each node), toggling the visibility to match whatever the pending state was set to. This is important to clean up any nodes that are left visible when they should not be. This occurs when the user navigates between pages, and is illustrated below:
 
 Navigate from **#!/a/b/f/k** to **#!/a/c/i/m**:
+
 ![nav2](http://img.photobucket.com/albums/v300/flaber/20140227_001002_zps77638f33.jpg)
 
 Here we can see a similar process as described above with the first 2 steps. However, we can see at the end of the second step, after `m` began the `reveal` process, that several nodes are still visible when they should not be. Nodes `f` `k` `n` `o` and `s` are all still visible despite not matching the url. This is because the reveal process only toggles direct children, in this case `b`. The nodes mentioned above will not be visible to the user (since `b` is not visible), but to resolve their proper state, this is why we need **Step 3**.
@@ -106,6 +107,7 @@ Here we can see a similar process as described above with the first 2 steps. How
 To make **Spagety** flexible numerous events are fired throughout the navigation process. Each of these events can be configured on a global scale, or on a per node basis. Each event bubbles up through its parent's until the global event handler is called. Each node can also prevent the event from bubbling up as well.
 
 An overview of the Events can be seen below:
+
 ![events](http://img.photobucket.com/albums/v300/flaber/20140226_012916_zps830db3f0.jpg)
 
 There are **12** different events that may be fired during the navigation process. Events marked with a `+` indicate that these will be called on each node affected, instead of just once for the navigation cycle.
