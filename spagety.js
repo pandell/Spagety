@@ -1,3 +1,8 @@
+// Spagety JavaScript library v1.0.0
+// Copyright (c) 2014 Corey Jasinski, Pandell, and other contributors
+// License: MIT (http://www.opensource.org/licenses/mit-license.php)
+// https://github.com/pandell/Spagety
+
 /*jslint browser: true*/
 /*global define: true*/
 
