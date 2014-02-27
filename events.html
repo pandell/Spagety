@@ -1,0 +1,82 @@
+<div class='header'>
+    Events
+</div>
+
+<div class='content'>
+    <p>
+        Spagety currently has 10 different events that it fires throughout its navigation process. These events 
+        can either be specified on the <b>spagety</b> module as a global event, or on a per-page basis, by passing
+        in a function to the binding. Each event is fired off of the <b>page</b> that triggered it, and then 
+        bubbles up until the root page is found. A <b>disableBubbling</b> function can be called on <b>spagety</b>
+        module to prevent these events from bubbling up. If a page-event returns <b>preventBubbling: true</b> then 
+        the bubbling will not happen.
+    </p>
+    
+    <p><ul>
+        <li>
+            <h2>beforeNavigate:</h2> This is fired on the root page when the navigation is first triggered.
+        </li>
+        <li>
+            <h2>onSourceError:</h2> This is fired when a resource for a page is not found / did not load properly.
+        </li>
+        <li>
+            <h2>onFound:</h2> This is fired when the url has successfully resolved to the appropriate <b>page</b> binding
+            in the tree.
+        </li>
+        <li>
+            <h2>onNotFound:</h2> This is fired when the url does not resolve to the tree-hierarchy of <b>pages</b>.
+        </li>
+        <li>
+            <h2>onRedirect:</h2> This is fired if during a navigation the <b>spagety.redirect</b> function is called
+            (most likely within a viewModel constructor, or guard).
+        </li>
+        <li>
+            <h2>before/after show/hide:</h2> These 4 events are fired before and after the visibility state of a page is changed.
+        </li>
+        <li>
+            <h2>afterNavigate:</h2> This is fired after navigation has completed, after both <b>onFound</b> and <b>onNotFound</b>.
+        </li>
+    </ul></p>
+    
+    <p>
+        The flow of events goes:
+        <ul>
+            <li>
+                beforeNavigate
+                <ul>
+                    <li>onSourceError</li>
+                    <li>
+                        <i>(redirecting === false)</i>
+                        <ul>
+                            <li>
+                                onNotFound
+                                <ul>
+                                    <li>afterNavigate</li>
+                                </ul>
+                            </li>
+                            <li>
+                                onFound
+                                <ul>
+                                    <li>before show/hide</li>
+                                    <li>after show/hide</li>
+                                    <li>afterNavigate</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <i>(redirecting === true)</i>
+                        <ul>
+                            <li>
+                                onRedirect
+                                <ul>
+                                    <li>beforeNavigate</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </p>
+</div>

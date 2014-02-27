@@ -1,0 +1,17 @@
+.wrapper {
+    border: 2px solid #ddd;
+    padding: 10px;
+}
+
+b {
+    font-size: 15px;
+}
+
+i {
+    text-decoration: none;
+}
+
+.testClass {
+    background: #ddd;
+    padding: 10px;
+}

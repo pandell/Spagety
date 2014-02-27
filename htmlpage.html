@@ -1,0 +1,37 @@
+<div class='header'>
+    Html
+</div>
+
+<div class='content'>
+    <p>
+        You can either specify a <b>html</b> property in the binding, to lazily-load an external
+        html file, or you can define your html inline, and allow the <b>page</b> binding to just toggle
+        the html. You can also nest pages within each other, as deep as you would like.
+    </p>
+    
+    <p>
+        <a href='#!/html/inline'>View inline Example</a> |
+        <a href='#!/html/loaded'>View loaded Example</a>
+        <hr/>
+    </p>
+    
+    <div data-bind='page: {id: "inline"}' style='border: 1px solid #ccc; padding: 15px;' class="page">
+        <div>I am the inline html</div>
+        <div>
+            <a href='#!/html/inline/a'>Go to page "A"</a> |
+            <a href='#!/html/inline/b'>Go to page "B"</a> |
+        </div>
+        <div data-bind='page: {id: "a"}' style='border: 1px solid #ccc; padding: 15px;' class="page">I am page "A"</div>
+        <div data-bind='page: {id: "b"}' style='border: 1px solid #ccc; padding: 15px;' class="page">
+            I am page "B"
+            <div>
+                <a href='#!/html/inline/b/c'>Go to subPage "C"</a> |
+                <a href='#!/html/inline/b/d'>Go to subPage "D"</a>
+            </div>
+            <div data-bind='page: {id: "c"}' style='border: 1px solid #ccc; padding: 15px;' class="page">I am subPage "C"</div>
+            <div data-bind='page: {id: "d"}' style='border: 1px solid #ccc; padding: 15px;' class="page">I am subPage "D"</div>
+        </div>
+    </div>
+    
+    <div data-bind='page: {id: "loaded", html: "lazyloaded.html"}' style='border: 1px solid #ccc; padding: 15px;' class="page"></div>
+</div>

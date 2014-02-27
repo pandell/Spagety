@@ -1,0 +1,57 @@
+<div class='header'>
+    About    
+</div>
+<div class='content'>
+    <p>
+        Spagety is a Single Page App <b>(SPA)</b> using <b>GET</b> requests. It uses
+        Requirejs and Knockout to work.
+    </p>
+    
+    <p>
+        Spagety creates custom Knockout bindings that allow a user to specify the resources
+        needed for a specific module. The resources could be html, javascript, css, or any 
+        combination of those three. These bindings form a tree hierarchy with each other that
+        help to resolve URL paths at run time, and to allow lazy-loading of content.
+    </p>
+    
+    <p>
+        By using Spagety, it makes it easy to develop AMD modules for your javascript, as well
+        as any accompanying html or css. Developing isolated modules allows for easier development
+        and testability. By decoupling modules from the rigid hierarchy of url paths, this allows for
+        modules to remain independant, only knowing about their immediate dependencies. Spagety resolves paths
+        at run time, depending on the custom bindings provided. Spagety also allows for lazy-loading content, so
+        that only the content a user wants to see will be loaded.
+    </p>
+    
+    <h1>How it works</h1>
+    
+    <p>
+        By adding the <b>page</b> Knockout binding within a modules html, will indicate that it has a
+        sub page that would like to be lazily-loaded.
+        
+        <div class='code'>&lt;div data-bind='page: {id: "TestPg", 
+                       html: "test.html", 
+                       css: "test.css", 
+                       viewModel: "test"}'&gt;&lt;/div&gt;</div>
+        
+        <ul>
+            <li>
+                <b>id:</b> specifies the crumb it would like to be identified by within the html.
+            </li>
+            <li>
+                <b>html:</b> specifies an external html file to be loaded, and then placed inside this div tag
+            </li>
+            <li>
+                <b>css:</b> specifies an external css file that will be scoped to this element
+            </li>
+            <li>
+                <b>viewModel:</b> specifies the javascript module to be loaded, and bound as a viewModel 
+            </li>
+        </ul>
+        
+        Each new <b>page</b> binding registers with its parent binding, so that a tree hierarchy is built at
+        run time. The url is then broken down into crumbs, and passed along this tree hierarchy to see if there
+        is a matching page. If it has not been loaded yet, then the resources will be loaded, and the tree extended 
+        with new sub pages.
+    </p>
+</div>

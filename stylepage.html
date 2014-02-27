@@ -1,0 +1,29 @@
+<div class='header'>
+    Styles
+</div>
+
+<div class='content'>
+    <p>
+        You can load <b>CSS</b> files if you need for particular modules. Since you are loading 
+        this css file with the module, it implies that it is not global styles, but rather styles
+        for the particular module. 
+    </p>
+    
+    <p>
+        The css file is loaded in, then a unique id is generated for the css file based off of
+        some of its file characteristics. This unique id is then prepended to each rule, and then 
+        the containing element gets the class with the id. The css is then inserted into the head
+        with a style tag. This helps to scope the styles to the particular module instead of globablly.
+    </p>
+    
+    <p>
+        Here is an example with three different css files, but with the same html.
+        <br/>
+        <a href='#!/css/ex1'>Example 1</a> | <a href='#!/css/ex2'>Example 2</a> | <a href='#!/css/ex3'>Example 3</a>
+        <hr/>
+    </p>
+    
+    <div data-bind='page: {id: "ex1", html: "styledemo.html", autoShow: true}' class="page"></div>
+    <div data-bind='page: {id: "ex2", html: "styledemo.html", css: "style2.css"}' class="page"></div>
+    <div data-bind='page: {id: "ex3", html: "styledemo.html", css: "style3.css"}' class="page"></div>
+</div>

@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Spagety!</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <link rel='stylesheet' type='text/css' href='./styles.css' />
+        <script data-main='config.js' type='text/javascript' src='./Libraries/require.js'></script>
+    </head>
+    <body style='display: none'>
+        <div id='topBanner'>
+            <div id='topBannerInner'>
+                <a href='#!/'><b>SPAGETY</b></a>
+                Knockout bindings for a Single Page App, using Require
+                <div id='author'>Corey Jasinski</div>
+            </div>
+        </div>
+
+        <div id='eventBar'>
+            <div id='title'>Events <button data-bind='click: function() { $data.events.removeAll(); }'>X</button></div>
+            <div data-bind='foreach: events'>
+                <div class='eventEntry' data-bind='style: {background: color}'>
+                    <b><div data-bind='text: label'></div></b>
+                    <div data-bind='text: message'></div>
+                </div>
+            </div>
+        </div>
+        
+        <div id='mainBody'>
+            <div id='navBar'>
+                <a href='#!/about' data-bind='css: {active: nav.about()}'>About</a>
+                <a href='#!/events' data-bind='css: {active: nav.events()}'>Events</a>
+                <a href='#!/css' data-bind='css: {active: nav.css()}'>Css</a>
+                <a href='#!/html' data-bind='css: {active: nav.html()}'>Html</a>
+                <a href='#!/viewModel' data-bind='css: {active: nav.viewModel()}'>ViewModel</a>
+            </div>
+            
+            <div id='contentWrapper'>
+                <div data-bind="page: {id: 'about', html: 'about.html', autoShow: true}" class="page"></div>
+                <div data-bind="page: {id: 'events', html: 'events.html'}" class="page"></div>
+                <div data-bind="page: {id: 'css', html: 'stylepage.html'}" class="page"></div>
+                <div data-bind="page: {id: 'html', html: 'htmlpage.html'}" class="page"></div>
+                <div data-bind="page: {id: 'viewModel', html: 'viewModel.html' }" class="page"></div>
+                <div data-bind="page: {id: 'notFound'}" class="page">
+                    <h1>404 NOT FOUND</h1>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

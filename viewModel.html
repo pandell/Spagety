@@ -1,0 +1,40 @@
+<div class='header'>
+    ViewModel
+</div>
+
+<div class='content'>
+    <p>
+        If you specify a <b>viewModel</b> in the binding, then spagety will try to get the javascript at the
+        file specified and then bind it to the page context. If you do not specify a <b>viewModel</b> then it 
+        will use its parent page's viewModel.
+    </p>
+    
+    <p>
+        Example: using the rootViewModel, we know there are &rarr; <b data-bind='text: events().length'></b> &larr; events currently.
+    </p>
+    
+    <p>Example: Loading a new viewModel</p>
+    
+    <div  class="page" data-bind='page: {id: "vm", viewModel: "subVm", autoShow: true, onSourceError: function() {window.location.href="#!/css"}}' style='border: 1px solid #ccc; padding: 25px;'>
+        <div>This is a new viewModel</div>
+        
+        <input data-bind='value: sub_val'/>
+        <b data-bind='text: sub_val'></b>
+        
+        <br/><br/>
+        <a href='#!/viewModel/vm/sub1'>Go to Sub page 1</a> &nbsp; | &nbsp; 
+        <a href='#!/viewModel/vm/sub2'>Go to Sub page 2</a>
+        <br/><br/>
+        
+        <div data-bind='page: {id:"sub1"}' style='border: 1px solid #ccc; padding: 25px;' class="page">
+            I share my viewModel with the parent!
+            <input data-bind='value: sub_val'/>
+        </div>
+        
+        <div data-bind='page: {id: "sub2", viewModel: "subSubVm"}' style='border: 1px solid #ccc; padding: 25px;' class="page">
+            I have my own viewModel
+            <input data-bind='value: subsub_val'/>
+            <b data-bind='text: subsub_val'></b>
+        </div>
+    </div>
+</div>
